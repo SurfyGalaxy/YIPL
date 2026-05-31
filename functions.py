@@ -1,3 +1,4 @@
+import index
 variables = {}
 
 def printy(args):
@@ -10,12 +11,25 @@ def printy(args):
     except Exception as e:
         return e
 
+
 def set(name, value):
     global variables
     try:
-        if not name.startswith('$'):
-            name = '$' + name
-        variables[name] = value
+        if isinstance(value, dict): # e.g. {'equality': ['Yes', 'Yes]}
+            # Extract function name and args
+            nested_name = list(value.keys())[0]     # 'equality'
+            nested_args = value[nested_name]        # ['Yes', 'Yes']
+            
+            result = index.findfunc(nested_name, nested_args)
+
+            if not name.startswith('$'):
+                name = '$' + name
+            variables[name] = result
+ 
+        else:
+            if not name.startswith('$'):
+                name = '$' + name
+            variables[name] = value
         return True
     except Exception as e:
         return e

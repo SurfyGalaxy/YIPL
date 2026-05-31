@@ -1,0 +1,141 @@
+# Requirements:
+
+while true:
+if/elif/else:, ==/!=, <, >,
+=
+input()
+print()
++, /, -, *
+
+
+## Truthiness
+
+For `or`, `and`, and `not`, YIPL follows Python's truthiness rules:
+
+**Falsy values:** `False`, `None`, `0`, `0.0`, `""` (empty string), `[]` (empty list), `{}` (empty dict)
+
+**Truthy values:** Everything else
+
+## Nesting functions
+
+YIPL allows the nesting of functions to form more complex functions.
+
+#### Example (Greater than or equal):
+```yaml
+or:
+  - greater:
+    - a
+    - b
+  - equality:
+    - a
+    - b
+```  
+
+# Syntax
+
+## Comparisons
+
+### Equality
+```python
+a == b
+```
+
+Takes two varibles, outputs bool if exactly the same
+```yaml
+equality:
+  - a
+  - b
+```
+
+### Greater than
+```python
+a > b
+```
+
+Takes two int or floats, outputs bool if `a` is greater than `b` (not equal to)
+```yaml
+greater:
+  - a
+  - b
+```
+
+### Less than
+```python
+a < b
+```
+
+Takes two int or floats, outputs bool if `a` is less than `b` (not equal to)
+```yaml
+less:
+  - a
+  - b
+```
+
+### Or
+```python
+a or b
+```
+
+Takes two bools or comparisons, outputs bool if `a` or `b` is `True`
+```yaml
+or:
+   - a
+   - b
+```
+
+### And
+```python
+a and b
+```
+
+Takes two bools or comparisons, outputs bool if `a` and `b` is `True`
+```yaml
+and:
+  - a
+  - b
+```
+
+### Not
+```python
+not a
+```
+
+Takes one bool or comparisons, outputs the opposite boolean literal
+```yaml
+not:
+  - a
+```
+
+## Conditionals
+
+```python
+if a == True:
+    <code>
+elif a == False:
+    <code>
+else:
+    <code>
+```
+
+#### If:
+Takes one bool or comparison, runs the rest of the list if it recieves `True`
+
+#### Elif:
+If the `if` above it returned `False`, run this comparison instead. Optional and there may be more than one for every `if`
+
+#### Else:
+If all `if` and `elif` conditionals return `False`, run this code. Optional and always at the end of the `if`/`elif` statements
+
+```yaml
+if:
+  - equality:
+    - a
+    - True
+  - <code>
+elif:
+  - equality:
+    - a
+    - False
+  - <code>
+else:
+  - <code>

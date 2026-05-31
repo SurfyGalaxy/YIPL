@@ -34,12 +34,10 @@ or:
 ## Data Types
 
 YIPL supports many types of varibles:
-- Strings (`"String"` or `'string'`)
+- Strings (`"string"` or `'string'` or `string`)
 - Ints (`1`)
 - Floats (`1.45`)
 
-#### Example:
-`My varible`
 
 # Syntax
 
@@ -199,17 +197,17 @@ divide:
 
 ## Varibles
 
-Varibles are defined as a word without any  `''` or `""`. Unlike most languages, they can have spaces.
+Varibles are made by prepending a string with `$`. They do not need to be put in quotes
+When using `set:`, the `$` is optional
 
 ```python
 filler_word = "Foobar"
 ```
 
-Creates a varible with item 1, with a value of item 2
 ```yaml
 set:
-  - filler word
-  - "Foobar"
+  - $filler word
+  - Foobar
 ```
 
 ## Output

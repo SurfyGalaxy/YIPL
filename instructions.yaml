@@ -1,4 +1,6 @@
 print:
-  - $Hello world!
-print_1:
   - Hello world!
+print_1:
+  - equality:
+    - Yes
+    - Yes

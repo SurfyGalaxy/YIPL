@@ -7,6 +7,9 @@ The name is pronounced "Yip - el"
 
 YIPL was made as an entry in Hack Club's Horizons Hackathon.
 
+Why?
+Why *not*?
+
 
 # General rules of YIPL
 
@@ -121,34 +124,41 @@ not:
 
 ```python
 if a == True:
-    <code>
+    print("Yes")
 elif a == False:
-    <code>
+    print("No")
 else:
-    <code>
+    print("something else")
 ```
 
 #### If:
-Takes one bool or comparison, runs the rest of the list if it receives `True`
+Takes one bool or comparison, jumps to the **name** of the second entry if true, the third entry if false (think ASM). Every term is required
 
-#### Elif:
-If the `if` above it returned `False`, run this comparison instead. Optional and there may be more than one for every `if`
-
-#### Else:
-If all `if` and `elif` conditionals return `False`, run this code. Optional and always at the end of the `if`/`elif` statements
 
 ```yaml
-if:
+if_1:
   - equality:
     - a
     - True
+  - print_1
+  - if_2
+print_1:
+  - Yes
+goto_1:
   - <code>
-elif:
+if_2:
   - equality:
     - a
     - False
+  - print_2
+  - print_3
+print_2:
+  - No
+goto_2:
   - <code>
-else:
+print_3:
+  - something else
+goto_3:
   - <code>
 ```
 

@@ -63,3 +63,36 @@ def findfunc(keys, values):
         else:
             print(f"Error in {keys}: {x}")
             return None
+
+    
+    elif keys.startswith("plus_") or keys == "plus":
+        x = func.add(values[0], values[1])
+        if not isinstance(x, Exception):
+            return x
+        else:
+            print(f"Error in {keys}: {x}")
+            return None
+        
+    elif keys.startswith("minus_") or keys == "minus":
+        x = func.minus(values[0], values[1])
+        if not isinstance(x, Exception):
+            return x
+        else:
+            print(f"Error in {keys}: {x}")
+            return None
+    
+    elif keys.startswith("multiply_") or keys == "multiply":
+        x = func.multiply(values[0], values[1])
+        if not isinstance(x, Exception):
+            return x
+        else:
+            print(f"Error in {keys}: {x}")
+            return None
+    
+    elif keys.startswith("divide_") or keys == "divide":
+        x = func.divide(values[0], values[1])
+        if not isinstance(x, Exception):
+            return x
+        else:
+            print(f"Error in {keys}: {x}")
+            return None

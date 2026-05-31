@@ -2,7 +2,6 @@ import yaml
 import functions as func
 import index
 from types import SimpleNamespace
-print({"equality": ['a', 'b']})
 with open("instructions.yaml") as f: # Copied from my other project, Clide
     instructions = yaml.safe_load(f)
 

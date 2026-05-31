@@ -1,4 +1,8 @@
+set:
+  - $result
+  - and:
+    - equality: ["Yes", "Yes"]
+    - greater: [5, 3]
+
 print:
-  - Equality:
-    - Yes
-    - Yes
+  - $result

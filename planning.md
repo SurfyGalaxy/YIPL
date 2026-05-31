@@ -1,12 +1,14 @@
-# Requirements:
+# YIPL
 
-while true:
-if/elif/else:, ==/!=, <, >,
-=
-input()
-print()
-+, /, -, *
+YIPL (YAML Is a Programming Language) is (soon to be) a turing-complete programming language using YAML's file format.
+The name is pronounced "Yip - el"
 
+## History
+
+YIPL was made as an entry in Hack Club's Horizons Hackathon.
+
+
+# General rules of YIPL
 
 ## Truthiness
 
@@ -33,7 +35,7 @@ or:
 
 ## Data Types
 
-YIPL supports many types of varibles:
+YIPL supports many types of variables:
 - Strings (`"string"` or `'string'` or `string`)
 - Ints (`1`)
 - Floats (`1.45`)
@@ -48,7 +50,7 @@ YIPL supports many types of varibles:
 a == b
 ```
 
-Takes two varibles, outputs bool if exactly the same
+Takes two variables, outputs bool if exactly the same
 ```yaml
 equality:
   - a
@@ -127,7 +129,7 @@ else:
 ```
 
 #### If:
-Takes one bool or comparison, runs the rest of the list if it recieves `True`
+Takes one bool or comparison, runs the rest of the list if it receives `True`
 
 #### Elif:
 If the `if` above it returned `False`, run this comparison instead. Optional and there may be more than one for every `if`
@@ -195,9 +197,9 @@ divide:
 ```
 
 
-## Varibles
+## variables
 
-Varibles are made by prepending a string with `$`. They do not need to be put in quotes
+variables are made by prepending a string with `$`. They do not need to be put in quotes
 When using `set:`, the `$` is optional
 
 ```python

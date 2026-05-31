@@ -31,6 +31,16 @@ or:
     - b
 ```  
 
+## Data Types
+
+YIPL supports many types of varibles:
+- Strings (`"String"` or `'string'`)
+- Ints (`1`)
+- Floats (`1.45`)
+
+#### Example:
+`My varible`
+
 # Syntax
 
 ## Comparisons
@@ -106,6 +116,7 @@ not:
   - a
 ```
 
+
 ## Conditionals
 
 ```python
@@ -139,3 +150,76 @@ elif:
   - <code>
 else:
   - <code>
+```
+
+
+## Arithmetic
+All of YIPL's arithmetic only works on two values at a time; `a + b + c` in one function is not possible in YIPL
+
+```python
+a + b
+
+a - b
+
+a * b
+
+a / b
+```
+
+#### Addition:
+Returns the sum of two ints or floats as an int or float
+
+#### Subtraction:
+Returns the difference of two ints or floats as an int or float
+
+#### Multiplication:
+Returns the product of two ints or floats as an int or float
+
+#### Division:
+Returns the Quotient of two ints or floats as an int or float
+
+```yaml
+plus:
+  - a
+  - b
+
+minus:
+  - a
+  - b
+
+multiply:
+  - a
+  - b
+
+divide:
+  - a
+  - b
+```
+
+
+## Varibles
+
+Varibles are defined as a word without any  `''` or `""`. Unlike most languages, they can have spaces.
+
+```python
+filler_word = "Foobar"
+```
+
+Creates a varible with item 1, with a value of item 2
+```yaml
+set:
+  - filler word
+  - "Foobar"
+```
+
+## Output
+
+```python
+print(a)
+```
+
+Prints the given data to the terminal
+```yaml
+print:
+  - a
+```

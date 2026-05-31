@@ -14,6 +14,5 @@ for i in instructions:
     values.append(instructions[i])
 
 
-while index.pc < len(keys): #iterate over every key in instructions
-
-    index.findfunc(keys[index.pc], values[index.pc])
+while func.pc < len(keys): #iterate over every key in instructions
+    index.findfunc(keys[func.pc], values[func.pc], False)

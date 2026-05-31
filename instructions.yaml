@@ -1,4 +1,25 @@
-print:
-  - plus: [10, 5]
-goto:
-  - print
+set_1:
+  - a
+  - 0
+set_2:
+  - b
+  - 1
+print_1:
+  - $a
+^loop:
+set_3:
+  - c
+  - plus: [$a, $b]
+set_4:
+  - a
+  - $b
+set_5:
+  - b
+  - $c
+print_2:
+  - $c
+if:
+  - less: [$c, 100]
+  - ^loop
+  - ^end
+^end:

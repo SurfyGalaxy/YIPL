@@ -1,121 +1,215 @@
 import functions as func
 
-pc = 0
 
 
-def findfunc(keys, values):
+def handle_dependencies(args):
+    if isinstance(args, dict):
+    # For instances such as: {set: [$a, equality: [a, b]]}    This has broken far too many times
+        nested_name = list(args.keys())[0]     # 'equality'
+        nested_args = args[nested_name]        # ['Yes', 'Yes']
+        
+        result = findfunc(nested_name, nested_args, True)
+    else:
+        if type(args) == str:
+            if args.startswith('$'):
+                result = func.variables[args]
+            else:
+                result = args
+        else:
+            result = args
+    return result
+
+def handle_dependencies_set(args):
+    if isinstance(args, dict):
+    # For instances such as: {set: [$a, equality: [a, b]]}    This has broken far too many times
+        nested_name = list(args.keys())[0]     # 'equality'
+        nested_args = args[nested_name]        # ['Yes', 'Yes']
+        
+        result = findfunc(nested_name, nested_args, True)
+    else:
+        if type(args) == str:
+            if not args.startswith('$'):
+                result = '$' + args
+            else:
+                result = args
+        else:
+            result = args
+    return result
+
+
+def findfunc(keys, values, is_nesting):
     if keys.startswith("print_") or keys == "print": # Equal to python print() operator
-        x = func.printy(values[0])
+        a = handle_dependencies(values[0])
+        x = func.printy(a)
         if not isinstance(x, Exception):
+            increment(is_nesting)
             return x
         else:
             print(f"Error in {keys}: {x}")
             return None
+            increment(is_nesting)
 
     elif keys.startswith("set_") or keys == "set": # Equal to python assignment ( x = "value" )
-        x = func.set(values[0], values[1])
+        a = handle_dependencies_set(values[0])
+        b = handle_dependencies(values[1])
+        x = func.set(a, b)
         if not isinstance(x, Exception):
+            increment(is_nesting)
             return x
         else:
             print(f"Error in {keys}: {x}")
+            increment(is_nesting)
             return None
 
     elif keys.startswith("equality_") or keys == "equality":
-        x = func.equality(values[0], values[1])
+        a = handle_dependencies(values[0])
+        b = handle_dependencies(values[1])
+        x = func.equality(a, b)
         if not isinstance(x, Exception):
+            increment(is_nesting)
             return x
         else:
             print(f"Error in {keys}: {x}")
+            increment(is_nesting)
             return None
     
     elif keys.startswith("greater_") or keys == "greater":
-        x = func.greater(values[0], values[1])
+        a = handle_dependencies(values[0])
+        b = handle_dependencies(values[1])
+        x = func.greater(a, b)
         if not isinstance(x, Exception):
+            increment(is_nesting)
             return x
         else:
             print(f"Error in {keys}: {x}")
+            increment(is_nesting)
             return None
 
     elif keys.startswith("less_") or keys == "less":
-        x = func.less(values[0], values[1])
+        a = handle_dependencies(values[0])
+        b = handle_dependencies(values[1])
+        x = func.less(a, b)
         if not isinstance(x, Exception):
+            increment(is_nesting)
             return x
         else:
             print(f"Error in {keys}: {x}")
+            increment(is_nesting)
             return None
 
     elif keys.startswith("or_") or keys == "or":
-        x = func.ory(values[0], values[1])
+        a = handle_dependencies(values[0])
+        b = handle_dependencies(values[1])
+        x = func.ory(a, b)
         if not isinstance(x, Exception):
+            increment(is_nesting)
             return x
         else:
             print(f"Error in {keys}: {x}")
+            increment(is_nesting)
             return None
     
     elif keys.startswith("and_") or keys == "and":
-        x = func.andy(values[0], values[1])
+        a = handle_dependencies(values[0])
+        b = handle_dependencies(values[1])
+        x = func.andy(a, b)
         if not isinstance(x, Exception):
+            increment(is_nesting)
             return x
         else:
             print(f"Error in {keys}: {x}")
+            increment(is_nesting)
             return None
 
     elif keys.startswith("not_") or keys == "not":
-        x = func.noty(values[0])
+        a = handle_dependencies(values[0])
+        x = func.noty(a)
         if not isinstance(x, Exception):
+            increment(is_nesting)
             return x
         else:
             print(f"Error in {keys}: {x}")
+            increment(is_nesting)
             return None
 
     
     elif keys.startswith("plus_") or keys == "plus":
-        x = func.add(values[0], values[1])
+        a = handle_dependencies(values[0])
+        b = handle_dependencies(values[1])
+        x = func.add(a, b)
         if not isinstance(x, Exception):
+            increment(is_nesting)
             return x
         else:
             print(f"Error in {keys}: {x}")
+            increment(is_nesting)
             return None
         
     elif keys.startswith("minus_") or keys == "minus":
-        x = func.minus(values[0], values[1])
+        a = handle_dependencies(values[0])
+        b = handle_dependencies(values[1])
+        x = func.minus(a, b)
         if not isinstance(x, Exception):
+            increment(is_nesting)
             return x
         else:
             print(f"Error in {keys}: {x}")
+            increment(is_nesting)
             return None
     
     elif keys.startswith("multiply_") or keys == "multiply":
-        x = func.multiply(values[0], values[1])
+        a = handle_dependencies(values[0])
+        b = handle_dependencies(values[1])
+        x = func.multiply(a, b)
         if not isinstance(x, Exception):
+            increment(is_nesting)
             return x
         else:
             print(f"Error in {keys}: {x}")
+            increment(is_nesting)
             return None
     
     elif keys.startswith("divide_") or keys == "divide":
-        x = func.divide(values[0], values[1])
+        a = handle_dependencies(values[0])
+        b = handle_dependencies(values[1])
+        x = func.divide(a, b)
         if not isinstance(x, Exception):
+            increment(is_nesting)
             return x
         else:
             print(f"Error in {keys}: {x}")
+            increment(is_nesting)
             return None
 
     elif keys.startswith("goto_") or keys == "goto":
-        x = func.goto(values[0])
+        a = handle_dependencies(values[0])
+        x = func.goto(a)
         if not isinstance(x, Exception):
+            increment(is_nesting)
             return x
         else:
             print(f"Error in {keys}: {x}")
+            increment(is_nesting)
             return None
 
     elif keys.startswith("if_") or keys == "if":
-        x = func.ify(values[0], values[1], values[2])
+        a = handle_dependencies(values[0])
+        b = handle_dependencies(values[1])
+        c = handle_dependencies(values[2])
+        x = func.ify(a, b, c)
         if not isinstance(x, Exception):
+            increment(is_nesting)
             return x
         else:
             print(f"Error in {keys}: {x}")
+            increment(is_nesting)
             return None
-
-    
-    pc += 1
+    else:
+        if keys.startswith('^'): # Intended tag
+            increment(is_nesting)
+        else:
+            increment
+            print(f"Unknown Keyword: {keys}")
+def increment(is_nesting):
+    if is_nesting == False:
+        func.pc += 1

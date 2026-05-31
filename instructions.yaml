@@ -1,8 +1,4 @@
 print:
   - plus: [10, 5]
-print_a:
-  - minus: [10, 5]
-print_b:
-  - multiply: [10, 5]
-print_c:
-  - divide: [10, 5]
+goto:
+  - print

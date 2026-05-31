@@ -1,4 +1,8 @@
 import functions as func
+
+pc = 0
+
+
 def findfunc(keys, values):
     if keys.startswith("print_") or keys == "print": # Equal to python print() operator
         x = func.printy(values[0])
@@ -96,3 +100,22 @@ def findfunc(keys, values):
         else:
             print(f"Error in {keys}: {x}")
             return None
+
+    elif keys.startswith("goto_") or keys == "goto":
+        x = func.goto(values[0])
+        if not isinstance(x, Exception):
+            return x
+        else:
+            print(f"Error in {keys}: {x}")
+            return None
+
+    elif keys.startswith("if_") or keys == "if":
+        x = func.ify(values[0], values[1], values[2])
+        if not isinstance(x, Exception):
+            return x
+        else:
+            print(f"Error in {keys}: {x}")
+            return None
+
+    
+    pc += 1

@@ -204,12 +204,25 @@ def findfunc(keys, values, is_nesting):
             print(f"Error in {keys}: {x}")
             increment(is_nesting)
             return None
+    
+    elif keys.startswith("input_") or keys == "input":
+        a = handle_dependencies(values[0])
+        x = func.inputy(a)
+        if not isinstance(x, Exception):
+            increment(is_nesting)
+            return x
+        else:
+            print(f"Error in {keys}: {x}")
+            increment(is_nesting)
+            return None
     else:
         if keys.startswith('^'): # Intended tag
             increment(is_nesting)
         else:
             increment
             print(f"Unknown Keyword: {keys}")
+
+
 def increment(is_nesting):
     if is_nesting == False:
         func.pc += 1

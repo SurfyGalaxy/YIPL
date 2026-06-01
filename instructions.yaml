@@ -1,25 +1,25 @@
-set_1:
+set:
   - a
-  - 0
-set_2:
-  - b
-  - 1
-print_1:
-  - $a
-^loop:
-set_3:
-  - c
-  - plus: [$a, $b]
-set_4:
-  - a
-  - $b
-set_5:
-  - b
-  - $c
-print_2:
-  - $c
+  - input:
+    - What's 2+2? 
+
 if:
-  - less: [$c, 100]
-  - ^loop
+  - equality:
+    - $a
+    - '4'
+  - print_correct
+  - print_wrong
+
+print_wrong:
+  - Incorrect!
+
+goto:
+  - set
+
+print_correct:
+  - Correct!  
+
+goto:
   - ^end
+
 ^end:

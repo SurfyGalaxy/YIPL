@@ -13,6 +13,7 @@ for i in instructions:
     keys.append(i)
     values.append(instructions[i])
 
+func.init(keys)
 
 while func.pc < len(keys): #iterate over every key in instructions
     index.findfunc(keys[func.pc], values[func.pc], False)

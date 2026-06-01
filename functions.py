@@ -2,14 +2,9 @@ import yaml
 variables = {}
 program_list = []
 pc = 0
-
-with open("instructions.yaml") as f: # Copied from my other project, Clide
-    instructions = yaml.safe_load(f)
-
-
-for i in instructions:
-    program_list.append(i)
-
+def init(lists):
+    global program_list
+    program_list = lists
 
 def printy(args):
     global variables
@@ -116,5 +111,11 @@ def ify(a, b, c):
         else:
             return goto(c)
         return True
+    except Exception as e:
+        return e
+
+def inputy(a):
+    try:
+        return input(a)
     except Exception as e:
         return e

@@ -119,3 +119,15 @@ def inputy(a):
         return input(a)
     except Exception as e:
         return e
+
+def cast(a, b): # A = type, B = data
+    try:
+        if a == "str":
+            output = str(b)
+        elif a == "int":
+            output = int(b)
+        elif a == "float":
+            output = float(b)
+        return output
+    except Exception as e:
+        return e

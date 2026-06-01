@@ -7,8 +7,6 @@ with open("instructions.yaml") as f: # Copied from my other project, Clide
 keys = []
 values = []
 
-#print(instructions)
-
 for i in instructions:
     keys.append(i)
     values.append(instructions[i])

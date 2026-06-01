@@ -37,7 +37,7 @@ def handle_dependencies_set(args):
     return result
 
 
-def findfunc(keys, values, is_nesting):
+def findfunc(keys: str | dict, values: any, is_nesting: bool) -> any:
     if keys.startswith("print_") or keys == "print": # Equal to python print() operator
         a = handle_dependencies(values[0])
         x = func.printy(a)
@@ -215,6 +215,19 @@ def findfunc(keys, values, is_nesting):
             print(f"Error in {keys}: {x}")
             increment(is_nesting)
             return None
+    
+    elif keys.startswith("cast_") or keys == "cast":
+        a = handle_dependencies(values[0]) # What to cast into (int, str or float)
+        b = handle_dependencies(values[1]) # the data
+        x = func.cast(a, b)
+        if not isinstance(x, Exception):
+            increment(is_nesting)
+            return x
+        else:
+            print(f"Error in {keys}: {x}")
+            increment(is_nesting)
+            return None
+
     else:
         if keys.startswith('^'): # Intended tag
             increment(is_nesting)

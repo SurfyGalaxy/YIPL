@@ -227,12 +227,23 @@ def findfunc(keys: str | dict, values: any, is_nesting: bool) -> any:
             print(f"Error in {keys}: {x}")
             increment(is_nesting)
             return None
+    
+    elif keys.startswith("blahaj_") or keys == "blahaj":
+        a = handle_dependencies(values[0])
+        x = func.blahaj(a)
+        if not isinstance(x, Exception):
+            increment(is_nesting)
+            return x
+        else:
+            print(f"Error in {keys}: {x}")
+            increment(is_nesting)
+            return None
 
     else:
         if keys.startswith('^'): # Intended tag
             increment(is_nesting)
         else:
-            increment
+            increment(is_nesting)
             print(f"Unknown Keyword: {keys}")
 
 

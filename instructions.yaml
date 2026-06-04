@@ -1,25 +1,4 @@
-set:
-  - a
-  - input:
-    - What's 2+2? 
-
-if:
-  - equality:
-    - $a
-    - '4'
-  - print_correct
-  - print_wrong
-
-print_wrong:
-  - Incorrect!
-
-goto:
-  - set
-
-print_correct:
-  - Correct!  
-
-goto:
-  - ^end
-
-^end:
+blahaj:
+  - 10
+print_🦈:
+  - 🦈

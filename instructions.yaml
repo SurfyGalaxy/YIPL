@@ -1,4 +1,36 @@
-blahaj:
-  - -10
-print_🦈:
-  - 🦈
+set:
+  - $no
+  - [a, b]
+
+print:
+  - $no
+
+list:
+    - append
+    - $no
+    - c
+
+print 2:
+  - $no
+
+list 2:
+  - delete
+  - $no
+  - 1
+
+print 3:
+  - $no
+  
+
+set 2:
+  - $length
+  - plus:
+    - "The length of the string is: "
+    - cast:
+      - str
+      - list 3:
+        - length
+        - $no
+  
+print 4:
+  - $length

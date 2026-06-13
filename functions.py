@@ -182,3 +182,17 @@ def blahaj(a): # Cheers @inw
         return True
     except Exception as e:
         return e
+
+def list_length(args):
+    return len(args)
+def list_read_index(args, index):
+    return args[index]
+def list_delete(args, index):
+    del args[index]
+    return True
+def list_append(args, text):
+    args.append(text)
+    return True
+def list_replace_index(args, index, text):
+    args[index] = text
+    return True

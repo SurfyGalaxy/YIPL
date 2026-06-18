@@ -1,4 +1,3 @@
-import yaml
 variables = {}
 program_list = []
 pc = 0

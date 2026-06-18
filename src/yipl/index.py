@@ -1,6 +1,4 @@
-import functions as func
-
-
+from . import functions as func
 
 def handle_dependencies(args):
     if isinstance(args, dict):

@@ -1,0 +1,35 @@
+[build-system]
+requires = ["setuptools>=77.0.3", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "yipl"
+version = "1.0.0"
+authors = [
+    {name = "SurfyGalaxy", email = "surfygalaxy@proton.me"},
+]
+description = "A low level turing-complete interpreter for YAML"
+readme = "README.md"
+requires-python = ">=3.8"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+license = {file = "LICENSE"}
+dependencies = [
+    "pyyaml",
+]
+
+[project.scripts]
+yipl = "yipl.__main__:main"
+
+[tool.setuptools]
+packages = ["yipl"]
+package-dir = {"" = "src"}
+
+[tool.setuptools.package-data]
+yipl = []
+
+[tool.setuptools.exclude-package-data]
+yipl = ["*.yaml", "*.txt", "*.md", "*.yml"]  # Exclude these file types

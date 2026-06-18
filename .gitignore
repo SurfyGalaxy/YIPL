@@ -3,3 +3,5 @@ Tests
 *.spec
 dist
 build
+*.txt
+PKG-INFO

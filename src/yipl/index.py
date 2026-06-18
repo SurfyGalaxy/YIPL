@@ -1,6 +1,4 @@
-import functions as func
-
-
+from . import functions as func
 
 def handle_dependencies(args):
     if isinstance(args, dict):
@@ -24,7 +22,6 @@ def handle_dependencies_set(args):
     # For instances such as: {set: [$a, equality: [a, b]]}    This has broken far too many times
         nested_name = list(args.keys())[0]     # 'equality'
         nested_args = args[nested_name]        # ['Yes', 'Yes']
-        
         result = findfunc(nested_name, nested_args, True)
     else:
         if type(args) == str:
@@ -38,7 +35,7 @@ def handle_dependencies_set(args):
 
 
 def findfunc(keys: str | dict, values: any, is_nesting: bool) -> any:
-    if keys.startswith("print_") or keys == "print": # Equal to python print() operator
+    if keys.startswith("print ") or keys == "print": # Equal to python print() operator
         a = handle_dependencies(values[0])
         x = func.printy(a)
         if not isinstance(x, Exception):
@@ -49,7 +46,7 @@ def findfunc(keys: str | dict, values: any, is_nesting: bool) -> any:
             return None
             increment(is_nesting)
 
-    elif keys.startswith("set_") or keys == "set": # Equal to python assignment ( x = "value" )
+    elif keys.startswith("set ") or keys == "set": # Equal to python assignment ( x = "value" )
         a = handle_dependencies_set(values[0])
         b = handle_dependencies(values[1])
         x = func.set(a, b)
@@ -61,7 +58,7 @@ def findfunc(keys: str | dict, values: any, is_nesting: bool) -> any:
             increment(is_nesting)
             return None
 
-    elif keys.startswith("equality_") or keys == "equality":
+    elif keys.startswith("equality ") or keys == "equality":
         a = handle_dependencies(values[0])
         b = handle_dependencies(values[1])
         x = func.equality(a, b)
@@ -73,7 +70,7 @@ def findfunc(keys: str | dict, values: any, is_nesting: bool) -> any:
             increment(is_nesting)
             return None
     
-    elif keys.startswith("greater_") or keys == "greater":
+    elif keys.startswith("greater ") or keys == "greater":
         a = handle_dependencies(values[0])
         b = handle_dependencies(values[1])
         x = func.greater(a, b)
@@ -85,7 +82,7 @@ def findfunc(keys: str | dict, values: any, is_nesting: bool) -> any:
             increment(is_nesting)
             return None
 
-    elif keys.startswith("less_") or keys == "less":
+    elif keys.startswith("less ") or keys == "less":
         a = handle_dependencies(values[0])
         b = handle_dependencies(values[1])
         x = func.less(a, b)
@@ -97,7 +94,7 @@ def findfunc(keys: str | dict, values: any, is_nesting: bool) -> any:
             increment(is_nesting)
             return None
 
-    elif keys.startswith("or_") or keys == "or":
+    elif keys.startswith("or ") or keys == "or":
         a = handle_dependencies(values[0])
         b = handle_dependencies(values[1])
         x = func.ory(a, b)
@@ -109,7 +106,7 @@ def findfunc(keys: str | dict, values: any, is_nesting: bool) -> any:
             increment(is_nesting)
             return None
     
-    elif keys.startswith("and_") or keys == "and":
+    elif keys.startswith("and ") or keys == "and":
         a = handle_dependencies(values[0])
         b = handle_dependencies(values[1])
         x = func.andy(a, b)
@@ -121,7 +118,7 @@ def findfunc(keys: str | dict, values: any, is_nesting: bool) -> any:
             increment(is_nesting)
             return None
 
-    elif keys.startswith("not_") or keys == "not":
+    elif keys.startswith("not ") or keys == "not":
         a = handle_dependencies(values[0])
         x = func.noty(a)
         if not isinstance(x, Exception):
@@ -133,7 +130,7 @@ def findfunc(keys: str | dict, values: any, is_nesting: bool) -> any:
             return None
 
     
-    elif keys.startswith("plus_") or keys == "plus":
+    elif keys.startswith("plus ") or keys == "plus":
         a = handle_dependencies(values[0])
         b = handle_dependencies(values[1])
         x = func.add(a, b)
@@ -145,7 +142,7 @@ def findfunc(keys: str | dict, values: any, is_nesting: bool) -> any:
             increment(is_nesting)
             return None
         
-    elif keys.startswith("minus_") or keys == "minus":
+    elif keys.startswith("minus ") or keys == "minus":
         a = handle_dependencies(values[0])
         b = handle_dependencies(values[1])
         x = func.minus(a, b)
@@ -157,7 +154,7 @@ def findfunc(keys: str | dict, values: any, is_nesting: bool) -> any:
             increment(is_nesting)
             return None
     
-    elif keys.startswith("multiply_") or keys == "multiply":
+    elif keys.startswith("multiply ") or keys == "multiply":
         a = handle_dependencies(values[0])
         b = handle_dependencies(values[1])
         x = func.multiply(a, b)
@@ -169,7 +166,7 @@ def findfunc(keys: str | dict, values: any, is_nesting: bool) -> any:
             increment(is_nesting)
             return None
     
-    elif keys.startswith("divide_") or keys == "divide":
+    elif keys.startswith("divide ") or keys == "divide":
         a = handle_dependencies(values[0])
         b = handle_dependencies(values[1])
         x = func.divide(a, b)
@@ -181,7 +178,7 @@ def findfunc(keys: str | dict, values: any, is_nesting: bool) -> any:
             increment(is_nesting)
             return None
 
-    elif keys.startswith("goto_") or keys == "goto":
+    elif keys.startswith("goto ") or keys == "goto":
         a = handle_dependencies(values[0])
         x = func.goto(a)
         if not isinstance(x, Exception):
@@ -192,7 +189,7 @@ def findfunc(keys: str | dict, values: any, is_nesting: bool) -> any:
             increment(is_nesting)
             return None
 
-    elif keys.startswith("if_") or keys == "if":
+    elif keys.startswith("if ") or keys == "if":
         a = handle_dependencies(values[0])
         b = handle_dependencies(values[1])
         c = handle_dependencies(values[2])
@@ -205,7 +202,7 @@ def findfunc(keys: str | dict, values: any, is_nesting: bool) -> any:
             increment(is_nesting)
             return None
     
-    elif keys.startswith("input_") or keys == "input":
+    elif keys.startswith("input ") or keys == "input":
         a = handle_dependencies(values[0])
         x = func.inputy(a)
         if not isinstance(x, Exception):
@@ -216,7 +213,7 @@ def findfunc(keys: str | dict, values: any, is_nesting: bool) -> any:
             increment(is_nesting)
             return None
     
-    elif keys.startswith("cast_") or keys == "cast":
+    elif keys.startswith("cast ") or keys == "cast":
         a = handle_dependencies(values[0]) # What to cast into (int, str or float)
         b = handle_dependencies(values[1]) # the data
         x = func.cast(a, b)
@@ -228,7 +225,7 @@ def findfunc(keys: str | dict, values: any, is_nesting: bool) -> any:
             increment(is_nesting)
             return None
     
-    elif keys.startswith("blahaj_") or keys == "blahaj":
+    elif keys.startswith("blahaj ") or keys == "blahaj":
         a = handle_dependencies(values[0])
         x = func.blahaj(a)
         if not isinstance(x, Exception):
@@ -238,6 +235,42 @@ def findfunc(keys: str | dict, values: any, is_nesting: bool) -> any:
             print(f"Error in {keys}: {x}")
             increment(is_nesting)
             return None
+
+    elif keys.startswith("list ") or keys == "list":
+        a = handle_dependencies(values[0])
+        b = handle_dependencies(values[1])
+        if len(values) <= 2: # len(x)
+            if a == "length":
+                x = func.list_length(b)
+            else:
+                x = f"{a} is an invalid operation"
+        elif len(values) == 3: # list.append
+            c = handle_dependencies(values[2])
+            if a == "append":
+                x = func.list_append(b, c)
+            elif a == "read":
+                x = func.list_read_index(b, c)
+            elif a == "delete":
+                x = func.list_delete(b, c)
+            else:
+                x = f"{a} is an invalid operation"
+        else:
+            d = handle_dependencies(values[3])
+            if a == "replace":
+                x = func.list_replace_index(b, c, d)
+            else:
+                x = f"{a} is an invalid operation"
+        if not isinstance(x, Exception):
+            increment(is_nesting)
+            return x
+        else:
+            increment(is_nesting)
+            print(f"Error in {keys}: {x}")
+            return None
+            
+
+
+    
 
     else:
         if keys.startswith('^'): # Intended tag

@@ -1,7 +1,9 @@
 # YIPL
 
 YIPL <small> pronounced `Yip-el` </small> is a turing-complete interpreted language using YAML as it's syntax, 
-made for Hackclub Horizons.
+made for Hackclub Horizons. 
+
+Its structure mirrors ASM, despite being slower than python.
 
 ## Quick start
 

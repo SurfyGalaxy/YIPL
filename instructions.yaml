@@ -1,99 +1,43 @@
-# Can *you* Fizzbuzz?
-set init:
-  - $count
-  - 1
-^start of the loop:
-if cap at 100:
-  - equality: [$count, 100]
-  - ^end of the loop
-  - ^main loop
+set 1:
+  - $fruits
+  - [apple, banana, cherry]
 
-^main loop:
-set output at the start:
-  - $output
-  - ''
-set mod 3:
-  - $mod 3
-  - equality:
-    - 0
-    - minus:
-      - $count
-      - multiply:
-        - 3
-        - cast:
-          - int
-          - divide:
-            - $count
-            - 3
-
-set mod 5:
-  - $mod 5
-  - equality:
-    - 0
-    - minus:
-      - $count
-      - multiply:
-        - 5
-        - cast:
-          - int
-          - divide:
-            - $count
-            - 5
-
-
-if both:
-   - and:
-     - $mod 3
-     - $mod 5
-   - ^FizzBuzz
-   - ^Not FizzBuzz
-
-^FizzBuzz:
-print FizzBuzz:
-   - FizzBuzz
-goto 1:
-  - ^done
-
-^Not FizzBuzz:
-if Fizz:
-  - $mod 3
-  - ^Fizz
-  - ^Not Fizz
-
-^Fizz:
-print Fizz:
-  - Fizz
-goto 2:
-  - ^done
-
-^Not Fizz:
-if Buzz:
-  - $mod 5
-  - ^Buzz
-  - ^Boring
-
-^Buzz:
-print Buzz:
-  - Buzz
-goto 3:
-  - ^done
-^Boring:
-print Boring:
-   - $count
-
-^done:
-set increment:
-  - $temp
-  - plus:
-    - $count
-    - 1
-set count:
-  - $count
-  - $temp
-goto start:
-  - ^start of the loop
+set 2:
+  - $fl
+  - list:
+    - length
+    - $fruits
 print 2:
-  - got here
-^end of the loop:
-print done:
-  - Done!
+  - $fl
+
+set 3:
+  - $fr
+  - list:
+    - read
+    - $fruits
+    - 1
+print 3:
+  - $fr
+
+list 1:
+  - append
+  - $fruits
+  - date
+
+set 4:
+  - $fl2
+  - list:
+    - length
+    - $fruits
+print 4:
+  - $fl2
+
+
+list 2:
+  - replace
+  - $fruits
+  - 0
+  - APPLE
+
+print 5:
+  - $fruits

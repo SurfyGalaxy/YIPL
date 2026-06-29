@@ -255,6 +255,7 @@ def findfunc(keys: str | dict, values: any, is_nesting: bool) -> any:
             else:
                 x = f"{a} is an invalid operation"
         else:
+            c = handle_dependencies(values[2])
             d = handle_dependencies(values[3])
             if a == "replace":
                 x = func.list_replace_index(b, c, d)

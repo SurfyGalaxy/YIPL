@@ -164,8 +164,10 @@ else:
     print("something else")
 ```
 
-#### If:
-Takes one bool or comparison, jumps to the **name** of the second entry if true, the third entry if false (think ASM). Every term is required
+#### If / Goto:
+Takes one bool or comparison, jumps to the **name** of the second entry if true, the third entry if false (think ASM). Every term is required.
+
+Both branching functions require tags to jump to, they will not jump to a function.
 
 
 ```yaml
